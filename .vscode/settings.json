@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.html": "html",
+    "*.jinja": "html",
+    "*.html.jinja": "html",
+    "stdio.h": "c"
+  }
+}
