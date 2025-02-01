@@ -12,7 +12,6 @@ print("Sum of 5 and 4 is:", add(5, 4))
 
 # Note for Lambda
 '''
-
 Lambda Function in Python – A Quick Refresher
 A lambda function in Python is an anonymous (nameless), single-line function that can have any number of arguments but only one expression. It is often used for short, simple operations where defining a full function would be unnecessary.
 
