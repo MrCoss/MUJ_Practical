@@ -1,0 +1,85 @@
+Definitions and Examples for Class, Object, Method, and Function in Python
+1. Class:
+A class is a blueprint for creating objects. It defines properties (attributes) and behaviors (methods) that the objects will have.
+
+🔹 Example of a Class:
+
+python
+Copy
+Edit
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+    
+    def display_info(self):
+        print(f"Car: {self.brand} {self.model}")
+Here, Car is a class that has attributes (brand and model) and a method (display_info).
+
+2. Object:
+An object is an instance of a class. It represents a specific entity created based on the class.
+
+🔹 Example of an Object:
+
+python
+Copy
+Edit
+my_car = Car("Toyota", "Corolla")  # Creating an object of class Car
+my_car.display_info()
+Output:
+
+makefile
+Copy
+Edit
+Car: Toyota Corolla
+Here, my_car is an object of the Car class.
+
+3. Method:
+A method is a function that is defined inside a class and operates on the objects of that class.
+
+🔹 Example of a Method:
+
+python
+Copy
+Edit
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def greet(self):  # This is a method
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+Here, greet() is a method because it is defined inside the Person class and uses self to access instance attributes.
+
+4. Function:
+A function is a reusable block of code that performs a specific task. It is defined using the def keyword but is not inside a class.
+
+🔹 Example of a Function:
+
+python
+Copy
+Edit
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print("Sum:", result)
+Output:
+
+makefile
+Copy
+Edit
+Sum: 8
+Here, add_numbers() is a function because it is not inside a class.
+
+5. Difference Between Function and Method:
+Feature	          Function	        Method
+Defined Inside	  Outside a class	  Inside a class
+Requires self	    No	              Yes
+Called Using	    Function name	    Object name
+Example	          add_numbers(5, 3)	my_car.display_info()
+Summary:
+Class → Blueprint (e.g., Car)
+Object → Instance of a class (e.g., my_car = Car("Toyota", "Corolla"))
+Method → Function inside a class (e.g., display_info())
+Function → Independent block of reusable code (e.g., add_numbers())
