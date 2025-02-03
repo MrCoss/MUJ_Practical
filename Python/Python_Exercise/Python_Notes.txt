@@ -83,3 +83,82 @@ Class → Blueprint (e.g., Car)
 Object → Instance of a class (e.g., my_car = Car("Toyota", "Corolla"))
 Method → Function inside a class (e.g., display_info())
 Function → Independent block of reusable code (e.g., add_numbers())
+
+
+
+1. List
+Definition:
+A list is an ordered collection of elements, which can be of any data type. Lists are mutable, meaning you can change, add, or remove items after the list is created.
+
+Characteristics:
+Ordered: The items in a list maintain their order.
+Mutable: You can change elements after creation.
+Indexed: Each item in the list has an index starting from 0.
+Allow duplicates: You can have repeated elements in a list.
+Heterogeneous: A list can store elements of different data types.
+Example:
+python
+Copy
+Edit
+my_list = [1, 2, 3, 4, 5]
+2. Tuple
+Definition:
+A tuple is an ordered collection of elements, similar to a list, but it is immutable. Once a tuple is created, its elements cannot be changed, added, or removed.
+
+Characteristics:
+Ordered: The items in a tuple maintain their order.
+Immutable: You cannot modify elements after creation.
+Indexed: Each item in the tuple has an index starting from 0.
+Allow duplicates: You can have repeated elements in a tuple.
+Heterogeneous: A tuple can store elements of different data types.
+Example:
+python
+Copy
+Edit
+my_tuple = (1, 2, 3, 4, 5)
+3. Dictionary
+Definition:
+A dictionary is an unordered collection of key-value pairs. Each key is unique, and it maps to a specific value. Dictionaries are mutable.
+
+Characteristics:
+Unordered: The items do not maintain any specific order.
+Mutable: You can change the dictionary (add, modify, or remove key-value pairs).
+Key-Value pairs: Each item is a pair consisting of a key and a value.
+Keys must be unique: You cannot have duplicate keys.
+Keys are immutable: Keys must be hashable types (e.g., strings, numbers, tuples).
+Values can be any data type: The values associated with keys can be of any type (e.g., list, tuple, string).
+Example:
+python
+Copy
+Edit
+my_dict = {"name": "Alice", "age": 25, "city": "New York"}
+4. Set
+Definition:
+A set is an unordered collection of unique elements. Sets do not store duplicate values, and they are mutable.
+
+Characteristics:
+Unordered: The items in a set do not maintain any specific order.
+Mutable: You can add or remove elements after creation.
+No duplicates: Sets do not allow duplicate elements.
+Heterogeneous: A set can store elements of different data types.
+No indexing: You cannot access elements of a set by an index.
+Hashable: Elements must be immutable (e.g., numbers, strings, tuples), but the set itself is mutable.
+Example:
+python
+Copy
+Edit
+my_set = {1, 2, 3, 4, 5}
+Key Differences:
+Feature	List	Tuple	Dictionary	Set
+Order	Ordered	Ordered	Unordered	Unordered
+Mutability	Mutable	Immutable	Mutable	Mutable
+Duplicates Allowed	Yes	Yes	No (keys must be unique)	No (only unique elements)
+Indexing	Yes (Indexed by position)	Yes (Indexed by position)	No (Accessed by key)	No (No index)
+Heterogeneity	Yes (Can store different types)	Yes (Can store different types)	Yes (Values can be different types)	Yes (Can store different types)
+Hashable	No (Not hashable)	Yes (Hashable)	Yes (Keys must be hashable)	Yes (Elements must be hashable)
+Syntax	[]	()	{key: value}	{}
+Summary:
+Lists are ordered, mutable, and allow duplicates.
+Tuples are ordered, immutable, and allow duplicates.
+Dictionaries store key-value pairs, are mutable, and keys must be unique.
+Sets are unordered, mutable, and only allow unique elements.
