@@ -149,3 +149,20 @@ where Roll_number = 202;
 alter table Computer_Dept drop column Roll_no;
 alter table Electronics_Dept drop column Roll_no;
 alter table Mechanical_Dept drop column Roll_no;
+
+-- Modify Data Type of an Existing Column (Change Marks from FLOAT to DECIMAL(5,2))
+ALTER TABLE Computer_Dept MODIFY Marks DECIMAL(5,2);
+ALTER TABLE Electronics_Dept MODIFY Marks DECIMAL(5,2);
+ALTER TABLE Mechanical_Dept MODIFY Marks DECIMAL(5,2);
+
+-- Delete a Tuple Where Marks < 85 (from Computer & Electronics Dept.)
+DELETE FROM Computer_Dept WHERE Marks < 85;
+DELETE FROM Electronics_Dept WHERE Marks < 85;
+
+-- Drop One Table (Mechanical Dept.)
+drop table Mechanical_Dept;
+
+-- Get a Table with Only Name and Age of Students
+
+SELECT student_name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS Age 
+FROM Computer_Dept;
