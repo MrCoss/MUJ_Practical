@@ -94,3 +94,11 @@ INSERT INTO Mechanical_Dept VALUES
     
 Step 3 ----------Queries------------
 
+/*Get Information About Database and Tables*/
+
+show databases;
+use xyz_institute;
+show tables;
+desc Computer_Dept;
+desc Electronics_Dept;
+desc Mechanical_Dept;
