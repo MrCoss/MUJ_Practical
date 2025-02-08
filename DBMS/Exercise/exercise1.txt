@@ -1,0 +1,70 @@
+Exercise 1 Simple SQL Statements
+Consider the database of some academic institution.
+I. Create database in the name- XYZ institute.
+II. By using the database XYZ, create three different students
+tables of different departments (say Computer department,
+Electronics Department aand Mechanical Department)
+III. For each table of department, insert the following attributes
+about STUDENT of that department:
+(student-id#: String, student_name: string, sex: char,
+Phone_no: integer, date_of_birth: date, Dept: varchar(),
+address: string)
+IV. Demonstrate how you
+1. Get information about your Database and tables.
+2. Add two new column in each table as Roll_number and
+Marks (in percentage or CGPA)
+3. Enter at least five tuples for each relation in each table.
+4. Delete the column Phone_no. in any one table.
+5. Update any one table for column with certain roll number
+and address.
+6. Modify existing column with new data type.
+7. Delete any one tuples from any two tables with Marks less
+than certain value (say 85%)
+8. Drop any one table (say student table of Mechanical Dept.)
+9. Get the table with only two columns: name and Age (of
+STUDENT).
+Objective:
+The objective of this exercise is to revise and enable you to use a basic
+query related to DDL, DML, DQL statements.
+
+
+
+
+
+
+-----------------------Solution------------------------------
+
+Step 1- Create database and table
+
+create database xyz_Institute;
+use xyz_institute;
+
+create table Computer_Dept (
+	student_id varchar(10) primary key,
+    student_name varchar(50),
+    sex char(1),
+    phone_no bigint,
+    date_of_birth date,
+    Dept varchar(50),
+    address varchar(255)
+    );
+    
+CREATE TABLE Electronics_Dept (
+    student_id VARCHAR(10) PRIMARY KEY,
+    student_name VARCHAR(50),
+    sex CHAR(1),
+    Phone_no BIGINT,
+    date_of_birth DATE,
+    Dept VARCHAR(50),
+    address VARCHAR(255)
+);
+
+CREATE TABLE Mechanical_Dept (
+    student_id VARCHAR(10) PRIMARY KEY,
+    student_name VARCHAR(50),
+    sex CHAR(1),
+    Phone_no BIGINT,
+    date_of_birth DATE,
+    Dept VARCHAR(50),
+    address VARCHAR(255)
+);    
