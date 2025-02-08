@@ -34,7 +34,7 @@ query related to DDL, DML, DQL statements.
 
 -----------------------Solution------------------------------
 
-Step 1- Create database and table
+Step 1 ---------------Create database and table---------
 
 create database xyz_Institute;
 use xyz_institute;
@@ -67,4 +67,30 @@ CREATE TABLE Mechanical_Dept (
     date_of_birth DATE,
     Dept VARCHAR(50),
     address VARCHAR(255)
-);    
+);   
+
+Step 2 ----------Inserting data into Table------------
+
+insert into Computer_Dept values
+('C101','Amit Sharma','M','9562549825','2000-05-10','Computer','Delhi'),
+('C102', 'Neha Verma', 'F', 8765432109, '2001-08-15', 'Computer', 'Mumbai'),
+('C103', 'Rajesh Kumar', 'M', 7654321098, '1999-11-22', 'Computer', 'Bangalore'),
+('C104', 'Priya Singh', 'F', 6543210987, '2002-02-05', 'Computer', 'Kolkata'),
+('C105', 'Anil Kapoor', 'M', 5432109876, '2000-07-18', 'Computer', 'Chennai');
+
+INSERT INTO Electronics_Dept VALUES 
+('E101', 'Suresh Raina', 'M', 9123456780, '2001-06-11', 'Electronics', 'Delhi'),
+('E102', 'Pooja Mishra', 'F', 9234567891, '1998-09-25', 'Electronics', 'Hyderabad'),
+('E103', 'Rahul Gupta', 'M', 9345678902, '2002-12-13', 'Electronics', 'Pune'),
+('E104', 'Komal Yadav', 'F', 9456789013, '1999-04-29', 'Electronics', 'Jaipur'),
+('E105', 'Arun Tiwari', 'M', 9567890124, '2001-03-20', 'Electronics', 'Lucknow');
+
+INSERT INTO Mechanical_Dept VALUES 
+('M101', 'Vikram Joshi', 'M', 9876123450, '1997-10-05', 'Mechanical', 'Nagpur'),
+('M102', 'Simran Kaur', 'F', 8765123490, '1998-12-30', 'Mechanical', 'Amritsar'),
+('M103', 'Manoj Sahu', 'M', 7654123590, '2000-05-14', 'Mechanical', 'Bhopal'),
+('M104', 'Rekha Sen', 'F', 6543123690, '2001-01-22', 'Mechanical', 'Indore'),
+('M105', 'Prakash Mehta', 'M', 5432123790, '1999-08-09', 'Mechanical', 'Ahmedabad');
+    
+Step 3 ----------Queries------------
+
