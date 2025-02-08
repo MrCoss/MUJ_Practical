@@ -102,3 +102,35 @@ show tables;
 desc Computer_Dept;
 desc Electronics_Dept;
 desc Mechanical_Dept;
+
+/*
+Add Two New Columns: Roll_number and Marks
+*/
+alter table Computer_Dept add column Roll_number int unique;
+alter table Computer_Dept add column Marks Float;
+
+alter table Electronics_Dept add column Roll_number int unique;
+alter table Electronics_Dept add column Marks Float;
+
+alter table Mechanical_Dept add column Roll_number int unique;
+alter table Mechanical_Dept add column Marks Float;
+
+-- Insert Roll Number and Marks Data --
+
+update Computer_Dept set Roll_number = 101, marks = 92 where student_id = 'C101';
+update Computer_Dept set Roll_number = 102, marks = 85 where student_id = 'C102';
+update Computer_Dept set Roll_number = 103, marks = 78 where student_id = 'C103';
+update Computer_Dept set Roll_number = 104, marks = 88 where student_id = 'C104';
+update Computer_Dept set Roll_number = 105, marks = 95 where student_id = 'C105';
+
+update Computer_Dept set Roll_number = 201, marks = 91 where student_id = 'E101';
+update Computer_Dept set Roll_number = 202, marks = 86 where student_id = 'E102';
+update Computer_Dept set Roll_number = 203, marks = 80 where student_id = 'E103';
+update Computer_Dept set Roll_number = 204, marks = 89 where student_id = 'E104';
+update Computer_Dept set Roll_number = 205, marks = 94 where student_id = 'E105';
+
+update Computer_Dept set Roll_number = 301, marks = 90 where student_id = 'M101';
+update Computer_Dept set Roll_number = 302, marks = 79 where student_id = 'M102';
+update Computer_Dept set Roll_number = 303, marks = 88 where student_id = 'M103';
+update Computer_Dept set Roll_number = 304, marks = 83 where student_id = 'M104';
+update Computer_Dept set Roll_number = 305, marks = 92 where student_id = 'M105';
