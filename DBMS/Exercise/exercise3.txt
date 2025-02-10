@@ -67,3 +67,35 @@ create table participated(
     foreign key (report_no) references accident(report_no)
 );  
 
+-- Insert Sample data
+
+INSERT INTO PERSON VALUES 
+('D001', 'John Doe', 'New York'),
+('D002', 'Alice Smith', 'Los Angeles'),
+('D003', 'Robert Brown', 'Chicago'),
+('D004', 'Emily Johnson', 'San Francisco'),
+('D005', 'David White', 'Houston');
+
+INSERT INTO CAR VALUES 
+('R101', 'Toyota Corolla', 2018),
+('R102', 'Honda Civic', 2020),
+('R103', 'Ford Mustang', 2019),
+('R104', 'Chevrolet Malibu', 2021),
+('R105', 'Nissan Altima', 2017);
+
+INSERT INTO ACCIDENT VALUES 
+(1001, '2023-05-10', 'New York'),
+(1002, '2023-06-15', 'Los Angeles'),
+(1003, '2023-07-20', 'Chicago');
+
+INSERT INTO OWNS VALUES 
+('D001', 'R101'),
+('D002', 'R102'),
+('D003', 'R103'),
+('D004', 'R104'),
+('D005', 'R105');
+
+INSERT INTO PARTICIPATED VALUES 
+('D001', 'R101', 1001, 5000),
+('D002', 'R102', 1002, 3000),
+('D003', 'R103', 1003, 7000);
