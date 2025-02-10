@@ -1,0 +1,69 @@
+------------------------------QUESTION-------------------------------
+Exercise 3 Primary Key, Foreign Key & Normalization
+Consider the Insurance database given below. The primary keys are
+underlined and the data types are specified:
+PERSON (driver – id #: String, name: string, address: string)
+CAR (regno: string, model: string, year: int)
+ACCIDENT (report-number: int, accd-date: date, location: string)
+OWNS (driver-id #:string, Regno:string)
+PARTICIPATED (driver-id: string, Regno:string, report-number:int,
+damage amount:int)
+Demonstrate how you:
+1. Create the above tables by properly specifying the primary keys
+and the foreign keys.
+2. Enter at least five tuples for each relation.
+3. Update the damage amount to certain amount (say 25000) for the
+car with a specific Regno in the ACCIDENT table with certain
+report- number.
+4. Add a new accident to the database.
+5. Find the total number of people who owned cars that were involved
+in accidents in certain years (say 2008).
+6. Find the number of accidents in which cars belonging to a specific
+model were involved.
+7. Display the owners and their car details.
+Objective:
+The objective of this exercise is to enable you to understand SQL relational
+concepts – Primary Key and Foreign Key and the concept of normalization.
+
+
+------------------Create Database and Table---------------------------
+
+create database exercise3;
+use exercise3;
+create table Person(
+	driver_id varchar(30) primary key,
+    name varchar(100),
+    address varchar (255)
+);
+
+create table Car(
+	regno varchar(20) primary key,
+    model varchar(50),
+    year int
+);
+
+create table accident(
+	report_no int primary key,
+    accd_date date,
+    location varchar(100)
+    );
+    
+create table owns(
+	driver_id varchar(30),
+    regno varchar(20),
+    primary key (driver_id, regno),
+    foreign key (driver_id) references Person(driver_id),
+    foreign key (regno) references car(regno)
+);  
+
+create table participated(
+	driver_id varchar(30),
+    regno varchar(20),
+    report_no int,
+    damage_amnt int,
+    primary key (driver_id, regno, report_no),
+    foreign key (driver_id) references Person(driver_id),
+    foreign key (regno) references Car(regno),
+    foreign key (report_no) references accident(report_no)
+);  
+
