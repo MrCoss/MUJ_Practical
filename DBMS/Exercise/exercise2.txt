@@ -1,0 +1,144 @@
+--------Question------
+
+
+Consider the database given below.
+Supplier (scode: int, sname: string, scity: string, turnover: int)
+Part (pcode: string, weight: int, color: string, cost: int,
+sellingprice: int)
+Supplier_Part (scode: int, pcode: string, qty: int)
+Demonstrate with appropriate SQL Statement for the following:
+1. Create the above tables
+2. Insert at least five suitable tuples for each relation
+3. Get the supplier number and part number in ascending order of
+supplier number.
+4. Get the details of supplier who operate from certain place (say
+Kolkata) with turnover 50.
+5. Get the total number of supplier.
+6. Get pairs of supplier number such that both operate from the
+same city.
+7. Get the part number (code) weighing between 25 and 35.
+8. Get the supplier number whose turnover is null.
+9. Get the part number that cost 20, 30 or 40 rupees.
+10. Get the supplier number of supplier are located in the same city
+(say Ahmedabad).
+11. Get the part number for part whose cost is less than the current
+maximum cost.
+12. Get the part number whose cost is greater than the average cost.
+13. For each part supplied get part number and names of all cities
+supplying the part.
+14. Get the supplier number who supply at least one part supplied by
+supplier 5.
+15. Get the part number for the part supplied by more than one
+supplier.
+16. Get the names of suppliers who supply from city where there is at
+least one more supplier.
+17. Get the part number of all the part being supplied with no
+duplicates.
+
+
+create database exercise2;
+use exercise2;
+
+CREATE TABLE Supplier (
+    scode INT PRIMARY KEY,
+    sname VARCHAR(100),
+    scity VARCHAR(100),
+    turnover INT
+);
+
+CREATE TABLE Part (
+    pcode VARCHAR(20) PRIMARY KEY,
+    weight INT,
+    color VARCHAR(50),
+    cost INT,
+    sellingprice INT
+);
+
+CREATE TABLE Supplier_Part (
+    scode INT,
+    pcode VARCHAR(20),
+    qty INT,
+    PRIMARY KEY (scode, pcode),
+    FOREIGN KEY (scode) REFERENCES Supplier(scode),
+    FOREIGN KEY (pcode) REFERENCES Part(pcode)
+);
+    
+INSERT INTO Supplier (scode, sname, scity, turnover) VALUES
+(1, 'ABC Suppliers', 'Kolkata', 50),
+(2, 'XYZ Traders', 'Mumbai', 100),
+(3, 'PQR Distributors', 'Ahmedabad', NULL),
+(4, 'LMN Enterprises', 'Delhi', 200),
+(5, 'DEF Corp', 'Ahmedabad', 150);
+
+INSERT INTO Part (pcode, weight, color, cost, sellingprice) VALUES
+('P1', 20, 'Red', 25, 30),
+('P2', 30, 'Blue', 40, 50),
+('P3', 35, 'Green', 60, 75),
+('P4', 25, 'Yellow', 30, 40),
+('P5', 40, 'Black', 80, 100);
+
+INSERT INTO Supplier_Part (scode, pcode, qty) VALUES
+(1, 'P1', 100),
+(2, 'P2', 150),
+(3, 'P3', 200),
+(4, 'P4', 120),
+(5, 'P5', 180),
+(2, 'P3', 90),
+(4, 'P2', 50);
+    
+-- Get supplier number and part number in ascending order of supplier number
+select scode, pcode from Supplier_Part order by scode asc;
+
+-- get details of suppliers from kolkata with turnover 50
+select * from Supplier where scity = 'Kolkata' and turnover =50;
+
+-- Get the total number of suppliers
+select count(*) as total_suppliers from Supplier;
+
+-- Get pairs of supplier numbers from the same city
+select a.scode as supplier1, b.scode as supplier2, a.scity
+from Supplier a, Supplier b
+where a.scity = b.scity and a.scode < b.scode;
+
+-- Get part numbers weighing between 25 and 35
+SELECT pcode FROM Part WHERE weight BETWEEN 25 AND 35;
+
+-- Get supplier numbers whose turnover is NULL
+SELECT scode FROM Supplier WHERE turnover IS NULL;
+
+-- Get part numbers with cost 20, 30, or 40
+SELECT pcode FROM Part WHERE cost IN (20, 30, 40);
+
+-- Get supplier numbers from Ahmedabad
+SELECT scode FROM Supplier WHERE scity = 'Ahmedabad';
+
+-- Get part numbers for parts costing less than the max cost
+SELECT pcode FROM Part WHERE cost < (SELECT MAX(cost) FROM Part);
+
+-- Get part numbers whose cost is greater than the average cost
+SELECT pcode FROM Part WHERE cost > (SELECT AVG(cost) FROM Part);
+
+-- Get part numbers and names of all cities supplying the part
+SELECT sp.pcode, s.scity 
+FROM Supplier_Part sp 
+JOIN Supplier s ON sp.scode = s.scode;
+
+-- Get suppliers who supply at least one part supplied by supplier 5
+SELECT DISTINCT sp1.scode 
+FROM Supplier_Part sp1
+JOIN Supplier_Part sp2 ON sp1.pcode = sp2.pcode
+WHERE sp2.scode = 5 AND sp1.scode <> 5;
+
+-- Get part numbers supplied by more than one supplier
+SELECT pcode FROM Supplier_Part 
+GROUP BY pcode 
+HAVING COUNT(scode) > 1;
+
+-- Get names of suppliers from cities where at least one more supplier exists
+SELECT DISTINCT s1.sname 
+FROM Supplier s1 
+JOIN Supplier s2 ON s1.scity = s2.scity AND s1.scode <> s2.scode;
+
+-- Get all part numbers being supplied without duplicates
+SELECT DISTINCT pcode FROM Supplier_Part;
+
