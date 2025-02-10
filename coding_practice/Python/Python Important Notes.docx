@@ -1,0 +1,66 @@
+*args in Python
+In Python, *args is used in function definitions to allow the function to accept a variable number of positional arguments. It collects all the extra arguments passed to the function into a tuple.
+
+How *args Works
+The * before args tells Python that the function can accept multiple arguments.
+The arguments passed to *args are stored in a tuple.
+You can iterate over *args using a loop.
+Example 1: Using *args to Handle Multiple Arguments
+python
+Copy
+Edit
+def add_numbers(*args):
+    return sum(args)  # args is a tuple of all passed numbers
+
+print(add_numbers(1, 2, 3, 4))  # Output: 10
+print(add_numbers(5, 10))       # Output: 15
+✅ Here, add_numbers can take any number of arguments.
+
+Example 2: Mixing *args with Regular Parameters
+python
+Copy
+Edit
+def greet(name, *messages):
+    print(f"Hello, {name}!")
+    for msg in messages:
+        print(msg)
+
+greet("Alice", "Good morning!", "How are you?", "Have a great day!")
+Output:
+
+sql
+Copy
+Edit
+Hello, Alice!
+Good morning!
+How are you?
+Have a great day!
+✅ The first argument is assigned to name, and the rest go into *messages.
+
+Example 3: Unpacking a List or Tuple into *args
+python
+Copy
+Edit
+def multiply(*args):
+    result = 1
+    for num in args:
+        result *= num
+    return result
+
+numbers = (2, 3, 4)
+print(multiply(*numbers))  # Output: 24
+✅ Here, *numbers unpacks the tuple elements into separate arguments.
+
+Key Points About *args
+It collects extra positional arguments into a tuple.
+It allows functions to accept an unknown number of arguments.
+You can mix *args with other parameters, but *args must come after regular parameters.
+You can unpack sequences (lists, tuples) into *args using *.
+When to Use *args?
+✔ When writing functions that need to accept a flexible number of arguments.
+✔ When passing multiple values dynamically without defining multiple parameters.
+
+💡 Comparison with **kwargs (for keyword arguments)
+If *args is for positional arguments, **kwargs is for keyword arguments (key-value pairs).
+
+Would you like an explanation of **kwargs as well? 😊
