@@ -164,5 +164,5 @@ drop table Mechanical_Dept;
 
 -- Get a Table with Only Name and Age of Students
 
-SELECT student_name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS Age 
+SELECT student_name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS Age .
 FROM Computer_Dept;
