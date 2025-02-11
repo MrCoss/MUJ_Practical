@@ -29,45 +29,44 @@ concepts – Primary Key and Foreign Key and the concept of normalization.
 ------------------Create Database and Table---------------------------
 
 create database exercise3;
-use exercise3;
-create table Person(
-	driver_id varchar(30) primary key,
-    name varchar(100),
-    address varchar (255)
+CREATE TABLE PERSON (
+    driver_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100),
+    address VARCHAR(255)
 );
 
-create table Car(
-	regno varchar(20) primary key,
-    model varchar(50),
-    year int
+CREATE TABLE CAR (
+    regno VARCHAR(20) PRIMARY KEY,
+    model VARCHAR(50),
+    year INT
 );
 
-create table accident(
-	report_no int primary key,
-    accd_date date,
-    location varchar(100)
-    );
-    
-create table owns(
-	driver_id varchar(30),
-    regno varchar(20),
-    primary key (driver_id, regno),
-    foreign key (driver_id) references Person(driver_id),
-    foreign key (regno) references car(regno)
-);  
+CREATE TABLE ACCIDENT (
+    report_number INT PRIMARY KEY,
+    accd_date DATE,
+    location VARCHAR(100)
+);
 
-create table participated(
-	driver_id varchar(30),
-    regno varchar(20),
-    report_no int,
-    damage_amnt int,
-    primary key (driver_id, regno, report_no),
-    foreign key (driver_id) references Person(driver_id),
-    foreign key (regno) references Car(regno),
-    foreign key (report_no) references accident(report_no)
-);  
+CREATE TABLE OWNS (
+    driver_id VARCHAR(20),
+    regno VARCHAR(20),
+    PRIMARY KEY (driver_id, regno),
+    FOREIGN KEY (driver_id) REFERENCES PERSON(driver_id),
+    FOREIGN KEY (regno) REFERENCES CAR(regno)
+);
 
--- Insert Sample data
+CREATE TABLE PARTICIPATED (
+    driver_id VARCHAR(20),
+    regno VARCHAR(20),
+    report_number INT,
+    damage_amount INT,
+    PRIMARY KEY (driver_id, regno, report_number),
+    FOREIGN KEY (driver_id) REFERENCES PERSON(driver_id),
+    FOREIGN KEY (regno) REFERENCES CAR(regno),
+    FOREIGN KEY (report_number) REFERENCES ACCIDENT(report_number)
+);
+
+-- Inserting Data
 
 INSERT INTO PERSON VALUES 
 ('D001', 'John Doe', 'New York'),
@@ -86,7 +85,9 @@ INSERT INTO CAR VALUES
 INSERT INTO ACCIDENT VALUES 
 (1001, '2023-05-10', 'New York'),
 (1002, '2023-06-15', 'Los Angeles'),
-(1003, '2023-07-20', 'Chicago');
+(1003, '2023-07-20', 'Chicago'),
+(1004, '2024-01-05', 'San Francisco'),
+(1005, '2024-02-10', 'Houston');
 
 INSERT INTO OWNS VALUES 
 ('D001', 'R101'),
@@ -98,4 +99,6 @@ INSERT INTO OWNS VALUES
 INSERT INTO PARTICIPATED VALUES 
 ('D001', 'R101', 1001, 5000),
 ('D002', 'R102', 1002, 3000),
-('D003', 'R103', 1003, 7000);
+('D003', 'R103', 1003, 7000),
+('D004', 'R104', 1004, 4500),
+('D005', 'R105', 1005, 6000);
