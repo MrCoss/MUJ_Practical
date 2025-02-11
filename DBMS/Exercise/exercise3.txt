@@ -83,7 +83,7 @@ INSERT INTO CAR VALUES
 ('R105', 'Nissan Altima', 2017);
 
 INSERT INTO ACCIDENT VALUES 
-(1001, '2023-05-10', 'New York'),
+(1001, '2008-05-10', 'New York'),
 (1002, '2023-06-15', 'Los Angeles'),
 (1003, '2023-07-20', 'Chicago'),
 (1004, '2024-01-05', 'San Francisco'),
@@ -102,3 +102,36 @@ INSERT INTO PARTICIPATED VALUES
 ('D003', 'R103', 1003, 7000),
 ('D004', 'R104', 1004, 4500),
 ('D005', 'R105', 1005, 6000);
+
+-- Update the damage amount to certain amount (say 25000) for the
+-- car with a specific Regno in the ACCIDENT table with certain
+-- report- number.
+UPDATE PARTICIPATED
+SET damage_amount = 2500
+WHERE regno = 'R103' AND report_number = 1003;
+
+-- Add a new accident to the database.
+INSERT INTO ACCIDENT VALUES
+(1006, '2024-02-12', 'Dallas');
+
+INSERT INTO PARTICIPATED VALUES
+('D003','R103', 1006, 12000);
+
+-- Find the Total Number of People Who Owned Cars Involved in Accidents in a Certain Year (e.g., 2008)
+SELECT COUNT(DISTINCT O.driver_id) AS total_owners
+FROM OWNS O
+JOIN PARTICIPATED P ON O.regno = P.regno
+JOIN ACCIDENT A ON P.report_number = A.report_number
+WHERE YEAR(A.accd_date) = 2008;
+
+-- Find the Number of Accidents for a Specific Car Model (e.g., 'Toyota Corolla')
+SELECT COUNT(DISTINCT P.report_number) AS total_accidents
+FROM PARTICIPATED P
+JOIN CAR C ON P.regno = C.regno
+WHERE C.model = 'Toyota Corolla';
+
+-- Display the Owners and Their Car Details
+SELECT P.driver_id, P.name, P.address, C.regno, C.model, C.year
+FROM PERSON P
+JOIN OWNS O ON P.driver_id = O.driver_id
+JOIN CAR C ON O.regno = C.regno;
