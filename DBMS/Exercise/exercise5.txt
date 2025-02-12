@@ -1,0 +1,67 @@
+Exercise 5 View, Union
+Consider the following tables maintained by a book dealer:
+AUTHOR (author-id:int, name:string, city:string, country:string)
+PUBLISHER (publisher-id:int, name:string, city:string,
+country:string)
+CATALOG (book-id:int, title:string, author-id:int, publisher-id:int,
+category-id:int, year:int, price:int)
+CATEGORY (category-id:int, description:string)
+ORDER-DETAILS (order-no:int, book-id:int, quantity:int)
+Demonstrate with appropriate SQL Statement for the following:
+1. Create the above tables by properly specifying the primary keys
+and the foreign keys.
+2. Enter at least five tuples for each relation.
+3. Give the details of the authors who have 2 or more books in the
+catalog and the price of the books is greater than the average price
+of the books in the catalog and the year of publication is after
+certain year (say 2000).
+4. Find the author of the book which has maximum sales.
+5. Demonstrate how you increase the price of books published by a
+specific publisher by 10%.
+6. Illustrate the use of UNION operator between the table AUTHOR
+and CATALOG table.
+Objective: The objective of this exercise is to enable you to understand
+Transaction processing and create VIEW. Its objective is also to get the
+concept of UNION operator.
+
+CREATE DATABASE exercise5;
+USE exercise5;
+
+CREATE TABLE AUTHOR (
+    author_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50),
+    country VARCHAR(50)
+);
+
+CREATE TABLE PUBLISHER (
+    publisher_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50),
+    country VARCHAR(50)
+);
+
+CREATE TABLE CATEGORY (
+    category_id INT PRIMARY KEY,
+    description VARCHAR(100)
+);
+
+CREATE TABLE CATALOG (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    author_id INT,
+    publisher_id INT,
+    category_id INT,
+    year INT,
+    price INT,
+    FOREIGN KEY (author_id) REFERENCES AUTHOR(author_id),
+    FOREIGN KEY (publisher_id) REFERENCES PUBLISHER(publisher_id),
+    FOREIGN KEY (category_id) REFERENCES CATEGORY(category_id)
+);
+
+CREATE TABLE ORDER_DETAILS (
+    order_no INT PRIMARY KEY,
+    book_id INT,
+    quantity INT,
+    FOREIGN KEY (book_id) REFERENCES CATALOG(book_id)
+);
