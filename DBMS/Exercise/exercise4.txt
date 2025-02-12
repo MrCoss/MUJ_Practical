@@ -132,3 +132,48 @@ SELECT S.regno, S.name
 FROM STUDENT S
 LEFT JOIN ENROLL E ON S.regno = E.regno
 WHERE E.regno IS NULL;
+
+-- List All Adopted Books
+SELECT T.book_ISBN, T.book_title
+FROM TEXT T
+JOIN BOOK_ADOPTION B ON T.book_ISBN = B.book_ISBN;
+
+
+-- Find Departments That Adopt Books from a Specific Publisher
+SELECT C.dept
+FROM COURSE C
+JOIN BOOK_ADOPTION BA ON C.course_no = BA.course_no
+JOIN TEXT T ON BA.book_ISBN = T.book_ISBN
+WHERE T.publisher = 'Pearson'
+GROUP BY C.dept
+HAVING COUNT(DISTINCT T.book_ISBN) =
+	(SELECT COUNT(*)
+    FROM TEXT 
+    WHERE publisher = 'Pearson');
+    
+-- Demonstrate Joins Between STUDENT and ENROLL
+--  Inner Join (Only students who have enrolled)
+SELECT S.regno, S.name, E.course_no, E.sem, E.marks
+FROM STUDENT S
+INNER JOIN ENROLL E ON S.regno = E.regno;
+
+-- Left Join (All students, enrolled or not)
+SELECT S.regno, S.name, E.course_no, E.sem, E.marks
+FROM STUDENT S
+LEFT JOIN ENROLL E ON S.regno = E.regno;
+
+-- Right Join (All enrollments, including those with no student details)
+SELECT S.regno, S.name, E.course_no, E.sem, E.marks
+FROM STUDENT S
+RIGHT JOIN ENROLL E ON S.regno = E.regno;
+
+--  Full Join (Not directly available in MySQL, so use UNION of Left & Right Joins)
+SELECT S.regno, S.name, E.course_no, E.sem, E.marks
+FROM STUDENT S
+LEFT JOIN ENROLL E ON S.regno = E.regno
+
+UNION
+
+SELECT S.regno, S.name, E.course_no, E.sem, E.marks
+FROM STUDENT S
+RIGHT JOIN ENROLL E ON S.regno = E.regno;
