@@ -65,3 +65,46 @@ CREATE TABLE ORDER_DETAILS (
     quantity INT,
     FOREIGN KEY (book_id) REFERENCES CATALOG(book_id)
 );
+
+
+-- Insert data into table
+
+INSERT INTO AUTHOR VALUES 
+(1, 'J.K. Rowling', 'London', 'UK'),
+(2, 'Dan Brown', 'New York', 'USA'),
+(3, 'George Orwell', 'London', 'UK'),
+(4, 'Agatha Christie', 'Paris', 'France'),
+(5, 'J.R.R. Tolkien', 'Birmingham', 'UK');
+
+INSERT INTO PUBLISHER VALUES 
+(1, 'Penguin Books', 'London', 'UK'),
+(2, 'HarperCollins', 'New York', 'USA'),
+(3, 'Hachette', 'Paris', 'France'),
+(4, 'Bloomsbury', 'London', 'UK'),
+(5, 'Random House', 'Berlin', 'Germany');
+
+INSERT INTO CATEGORY VALUES 
+(1, 'Fiction'),
+(2, 'Thriller'),
+(3, 'Science Fiction'),
+(4, 'Mystery'),
+(5, 'Fantasy');
+
+INSERT INTO CATALOG VALUES 
+(101, 'Harry Potter', 1, 4, 5, 2007, 500),
+(102, 'The Da Vinci Code', 2, 2, 2, 2003, 600),
+(103, '1984', 3, 1, 3, 1949, 400),
+(104, 'Murder on the Orient Express', 4, 3, 4, 1934, 350),
+(105, 'The Hobbit', 5, 5, 5, 1937, 450),
+(106, 'Angels and Demons', 2, 2, 2, 2000, 550),
+(107, 'Harry Potter and the Chamber of Secrets', 1, 4, 5, 1998, 520);
+
+INSERT INTO ORDER_DETAILS VALUES 
+(1001, 101, 50),
+(1002, 102, 30),
+(1003, 103, 40),
+(1004, 104, 20),
+(1005, 105, 10),
+(1006, 106, 60),
+(1007, 107, 15);
+
