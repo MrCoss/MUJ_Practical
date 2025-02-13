@@ -121,3 +121,13 @@ WHERE c.price > (SELECT AVG(price) FROM CATALOG)
 AND c.year > 2000
 GROUP BY a.author_id, a.name
 -- HAVING COUNT(c.book_id) >= 2; (this condition is too restrictive)
+
+-- Find the Author of the Best-Selling Book
+
+SELECT a.name, c.title, SUM(o.quantity) AS total_sales
+FROM ORDER_DETAILS o
+JOIN  CATALOG c ON o.book_id = c.book_id
+JOIN AUTHOR a ON c.author_id = a.author_id
+GROUP BY a.name, c.title
+ORDER BY total_sales DESC
+LIMIT 1; 
