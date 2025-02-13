@@ -130,4 +130,12 @@ JOIN  CATALOG c ON o.book_id = c.book_id
 JOIN AUTHOR a ON c.author_id = a.author_id
 GROUP BY a.name, c.title
 ORDER BY total_sales DESC
-LIMIT 1; 
+LIMIT 1; -- we can change limit to 3 if we need top 3 best sellers
+
+-- Increase Prices of Books by a Specific Publisher by 10%
+UPDATE CATALOG 
+SET price = price * 1.10
+WHERE publisher_id IN (SELECT publisher_id FROM PUBLISHER WHERE name = 'Penguin Books');
+
+SELECT * FROM CATALOG WHERE publisher_id = (SELECT publisher_id FROM PUBLISHER WHERE name = 'Penguin Books');
+
