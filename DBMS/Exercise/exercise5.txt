@@ -108,3 +108,16 @@ INSERT INTO ORDER_DETAILS VALUES
 (1006, 106, 60),
 (1007, 107, 15);
 
+						-- QUERIES
+-- Give the details of the authors who have 2 or more books in the
+-- catalog and the price of the books is greater than the average price
+-- of the books in the catalog and the year of publication is after
+-- certain year (say 2000)
+
+SELECT a.author_id, a.name, COUNT(c.book_id) AS book_count
+FROM AUTHOR a
+JOIN CATALOG c ON a.author_id = c.author_id
+WHERE c.price > (SELECT AVG(price) FROM CATALOG)
+AND c.year > 2000
+GROUP BY a.author_id, a.name
+-- HAVING COUNT(c.book_id) >= 2; (this condition is too restrictive)
