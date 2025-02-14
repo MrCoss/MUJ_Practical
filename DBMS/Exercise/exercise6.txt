@@ -7,6 +7,18 @@ Objective: The objective of this program is to enable you to use the Pl/SQL
 block.
 
 -- 
+
+CREATE TABLE Accounts (
+    acc_no NUMBER PRIMARY KEY,
+    balance NUMBER NOT NULL
+);
+
+INSERT INTO Accounts VALUES (101, 4000);
+INSERT INTO Accounts VALUES (102, 6000);
+COMMIT;
+
+
+
 DECLARE
     v_acc_no NUMBER;  -- Variable to hold account number
     v_balance NUMBER; -- Variable to store current balance
