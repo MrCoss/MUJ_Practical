@@ -139,3 +139,7 @@ WHERE publisher_id IN (SELECT publisher_id FROM PUBLISHER WHERE name = 'Penguin 
 
 SELECT * FROM CATALOG WHERE publisher_id = (SELECT publisher_id FROM PUBLISHER WHERE name = 'Penguin Books');
 
+-- Use UNION Between AUTHOR and CATALOG Tables
+SELECT author_id AS ID, name AS Name, city, country, 'AUTHOR' AS Source FROM AUTHOR
+UNION
+SELECT author_id AS ID, title AS Name, NULL AS city, NULL AS country, 'CATALOG' AS Source FROM CATALOG;
