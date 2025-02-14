@@ -1,0 +1,22 @@
+Advanced DBMS – Practical Exercise 7
+Manipal University Jaipur B2101 Page No.: 15
+COMMIT;
+END LOOP;
+CLOSE c1;
+END;
+Algorithm: The steps for this exercise are given below:
+Step – 1: Create table EMP with suitable attributes like ename, empno,
+sal.
+Step – 2: Write PL/SQL block for the conditions stated. ( shown above.
+Use may use temp)
+Step – 3: Execute and check temp.
+Expected Output: Display of the table with specified columns and
+conditions using curson and for loop
+
+CREATE TABLE EMP (
+    empno NUMBER PRIMARY KEY,
+    ename VARCHAR2(50),
+    sal NUMBER
+);
+
+
