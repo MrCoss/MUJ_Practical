@@ -41,3 +41,54 @@ INSERT INTO JOB_SALARIES VALUES ('Developer', 35000, 70000);
 INSERT INTO JOB_SALARIES VALUES ('Clerk', 20000, 40000);
 COMMIT;
 
+-- PL/SQL Block with Custom Exceptions
+Now, we write a PL/SQL block that:
+
+Retrieves the salary of an employee.
+Checks if it falls within the job's salary range.
+Raises a custom exception if it's below or above the range.
+
+DECLARE
+    v_empno EMPLOYEES.empno%TYPE := &Enter_Employee_Number;
+    v_salary EMPLOYEES.salary%TYPE;
+    v_job EMPLOYEES.job%TYPE;
+    v_min_salary JOB_SALARIES.min_salary%TYPE;
+    v_max_salary JOB_SALARIES.max_salary%TYPE;
+
+    -- Define custom exceptions
+    BELOW_SALARY_RANGE EXCEPTION;
+    ABOVE_SALARY_RANGE EXCEPTION;
+    
+BEGIN
+    -- Fetch employee salary and job
+    SELECT salary, job INTO v_salary, v_job
+    FROM EMPLOYEES
+    WHERE empno = v_empno;
+
+    -- Fetch job's salary range
+    SELECT min_salary, max_salary INTO v_min_salary, v_max_salary
+    FROM JOB_SALARIES
+    WHERE job = v_job;
+
+    -- Check salary range
+    IF v_salary < v_min_salary THEN
+        RAISE BELOW_SALARY_RANGE;
+    ELSIF v_salary > v_max_salary THEN
+        RAISE ABOVE_SALARY_RANGE;
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Salary is within the range.');
+    END IF;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Employee or job not found.');
+    WHEN BELOW_SALARY_RANGE THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Salary is below the minimum range for the job.');
+    WHEN ABOVE_SALARY_RANGE THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Salary exceeds the maximum range for the job.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Unexpected Error: ' || SQLERRM);
+END;
+/
+
+
