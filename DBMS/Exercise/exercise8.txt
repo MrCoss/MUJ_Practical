@@ -1,0 +1,19 @@
+-- QUESTION
+
+Write a PL/SQL block to illustrate the programmer-defined exceptions.
+Get the salary of an employee and check it with the job’s salary range.
+If the salary is below the range, raise exception
+BELOW_SALARY_RANGE. If the salary is above the range, raise
+exception ABOVE_SALARY_RANGE.
+Objective: The objective of this exercise is to enable you to make use of
+exception handling in PL/SQL.
+
+-- SOLUTION
+
+-- Create Employee Table
+CREATE TABLE EMPLOYEES (
+    empno NUMBER PRIMARY KEY,
+    ename VARCHAR2(50),
+    job VARCHAR2(50),
+    salary NUMBER
+);
