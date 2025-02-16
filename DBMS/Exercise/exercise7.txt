@@ -51,3 +51,12 @@ BEGIN
 END;
 /
 
+-- Alternative: Using FOR Loop (Cursor FOR Loop)
+BEGIN
+    FOR rec IN (SELECT empno, ename, sal FROM EMP) LOOP
+        DBMS_OUTPUT.PUT_LINE('Emp No: ' || rec.empno || 
+                             ', Name: ' || rec.ename || 
+                             ', Salary: ' || rec.sal);
+    END LOOP;
+END;
+/
