@@ -25,3 +25,16 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
 END calc_simple_interest;
 /
+
+-- Execute the Procedure
+
+DECLARE
+    v_interest NUMBER;
+BEGIN
+    -- Call the procedure with sample values
+    calc_simple_interest(10000, 5, 3, v_interest);
+    
+    -- Print the interest
+    DBMS_OUTPUT.PUT_LINE('Calculated Simple Interest: ' || v_interest);
+END;
+/
