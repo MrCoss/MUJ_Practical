@@ -1,0 +1,4 @@
+Write a procedure to calculate simple interest, taking principle, rate
+and year as inputs.
+Objective: The objective of this exercise is to enable you to use procedure
+in PL/SQL.
