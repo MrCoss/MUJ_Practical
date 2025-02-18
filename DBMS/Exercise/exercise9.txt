@@ -2,3 +2,26 @@ Write a procedure to calculate simple interest, taking principle, rate
 and year as inputs.
 Objective: The objective of this exercise is to enable you to use procedure
 in PL/SQL.
+
+-- Create the Procedure
+CREATE OR REPLACE PROCEDURE calc_simple_interest (
+    p_principal IN NUMBER,   -- Input: Principal amount
+    p_rate IN NUMBER,        -- Input: Interest rate
+    p_years IN NUMBER,       -- Input: Time in years
+    p_interest OUT NUMBER    -- Output: Calculated interest
+)
+IS
+BEGIN
+    -- Calculate simple interest
+    p_interest := (p_principal * p_rate * p_years) / 100;
+    
+    -- Display interest value
+    DBMS_OUTPUT.PUT_LINE('Principal: ' || p_principal);
+    DBMS_OUTPUT.PUT_LINE('Rate: ' || p_rate || '%');
+    DBMS_OUTPUT.PUT_LINE('Years: ' || p_years);
+    DBMS_OUTPUT.PUT_LINE('Simple Interest: ' || p_interest);
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+END calc_simple_interest;
+/
