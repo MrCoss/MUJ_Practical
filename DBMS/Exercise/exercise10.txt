@@ -19,3 +19,36 @@ INSERT INTO EMPLOYEES VALUES (1, 'John Doe', 'Software Engineer', 45000, 50000, 
 INSERT INTO EMPLOYEES VALUES (2, 'Jane Smith', 'Manager', 90000, 70000, 120000);
 INSERT INTO EMPLOYEES VALUES (3, 'Alice Brown', 'Analyst', 30000, 35000, 75000);
 COMMIT;
+
+-- Create the function
+
+CREATE OR REPLACE FUNCTION check_salary_range (
+    p_emp_id IN NUMBER
+) RETURN VARCHAR2
+IS
+    v_salary NUMBER;
+    v_min_salary NUMBER;
+    v_max_salary NUMBER;
+BEGIN
+    -- Retrieve employee's salary and salary range
+    SELECT salary, min_salary, max_salary 
+    INTO v_salary, v_min_salary, v_max_salary
+    FROM EMPLOYEES 
+    WHERE emp_id = p_emp_id;
+
+    -- Check if salary is within, below, or above range
+    IF v_salary < v_min_salary THEN
+        RETURN 'BELOW RANGE';
+    ELSIF v_salary > v_max_salary THEN
+        RETURN 'ABOVE RANGE';
+    ELSE
+        RETURN 'WITHIN RANGE';
+    END IF;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 'EMPLOYEE NOT FOUND';
+    WHEN OTHERS THEN
+        RETURN 'ERROR: ' || SQLERRM;
+END check_salary_range;
+/
