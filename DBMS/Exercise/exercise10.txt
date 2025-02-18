@@ -12,3 +12,10 @@ CREATE TABLE EMPLOYEES (
     min_salary NUMBER,
     max_salary NUMBER
 );
+
+-- Insert Sample Data
+
+INSERT INTO EMPLOYEES VALUES (1, 'John Doe', 'Software Engineer', 45000, 50000, 100000);
+INSERT INTO EMPLOYEES VALUES (2, 'Jane Smith', 'Manager', 90000, 70000, 120000);
+INSERT INTO EMPLOYEES VALUES (3, 'Alice Brown', 'Analyst', 30000, 35000, 75000);
+COMMIT;
