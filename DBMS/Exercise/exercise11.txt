@@ -1,0 +1,24 @@
+Create a trigger to update the 'product_price_history' table when the
+price of the product is updated in the 'product' table to maintain the
+history of the prices of the products when the price of a product
+changes constantly.
+Objective: The objective of this exercise is to enable you to use trigger in
+PL/SQL
+
+Create the PRODUCT Table
+CREATE TABLE PRODUCT (
+    product_id NUMBER PRIMARY KEY,
+    product_name VARCHAR2(100),
+    price NUMBER
+);
+
+Create the PRODUCT_PRICE_HISTORY Table
+
+CREATE TABLE PRODUCT_PRICE_HISTORY (
+    history_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    product_id NUMBER,
+    old_price NUMBER,
+    new_price NUMBER,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES PRODUCT(product_id)
+);
