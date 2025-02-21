@@ -38,3 +38,16 @@ BEGIN
     VALUES (:OLD.product_id, :OLD.price, :NEW.price, SYSTIMESTAMP);
 END;
 /
+
+-- Test the Trigger
+-- Update Product Prices
+UPDATE PRODUCT SET price = 55000 WHERE product_id = 1;
+UPDATE PRODUCT SET price = 22000 WHERE product_id = 2;
+COMMIT;
+
+
+-- Check Product Price History
+SELECT * FROM PRODUCT_PRICE_HISTORY;
+
+
+
