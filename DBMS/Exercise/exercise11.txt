@@ -22,3 +22,8 @@ CREATE TABLE PRODUCT_PRICE_HISTORY (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES PRODUCT(product_id)
 );
+
+-- Insert Sample Data
+INSERT INTO PRODUCT (product_id, product_name, price) VALUES (1, 'Laptop', 50000);
+INSERT INTO PRODUCT (product_id, product_name, price) VALUES (2, 'Phone', 20000);
+COMMIT;
