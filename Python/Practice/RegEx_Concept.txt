@@ -1,0 +1,39 @@
+Summary of Regular Expression Concepts
+1. Metacharacters (Special Characters)
+Metacharacters have special meanings in regex:
+
+[] → Defines a set of characters ([a-m] matches any letter from 'a' to 'm').
+\ → Signals a special sequence (\d matches any digit).
+. → Matches any character except a newline (he..o matches 'hello').
+^ → Matches the start of a string (^hello matches if the string starts with 'hello').
+$ → Matches the end of a string (planet$ matches if the string ends with 'planet').
+* → Matches zero or more occurrences (he.*o matches 'heo', 'hello', etc.).
++ → Matches one or more occurrences (he.+o requires at least one character between 'he' and 'o').
+? → Matches zero or one occurrence (he.?o matches 'heo' or 'heoo' but not 'heooo').
+{} → Specifies an exact number of occurrences (he.{2}o matches 'he__o' with exactly 2 characters in between).
+| → Works as an OR operator (falls|stays matches either 'falls' or 'stays').
+() → Groups expressions for capturing ((ab)+ matches 'ab', 'abab', etc.).
+2. Special Sequences
+Special sequences provide shortcuts for common patterns:
+
+\A → Matches the start of a string (\AThe matches if the string starts with "The").
+\b → Matches the beginning or end of a word (r"\bain" matches 'rain' but not 'brain').
+\B → Matches NOT at the beginning or end of a word (r"\Bain" matches 'brain' but not 'rain').
+\d → Matches any digit (0-9).
+\D → Matches any non-digit character.
+\s → Matches any whitespace character (space, tab, newline).
+\S → Matches any non-whitespace character.
+\w → Matches any word character (letters, digits, underscore).
+\W → Matches any non-word character.
+\Z → Matches the end of a string (Spain\Z matches if the string ends with "Spain").
+3. Character Sets
+A set [ ] defines a range or selection of characters:
+
+[arn] → Matches 'a', 'r', or 'n'.
+[a-n] → Matches any lowercase letter from 'a' to 'n'.
+[^arn] → Matches anything except 'a', 'r', or 'n'.
+[0123] → Matches '0', '1', '2', or '3'.
+[0-9] → Matches any digit (same as \d).
+[a-zA-Z] → Matches any letter, lowercase or uppercase.
+[0-5][0-9] → Matches two-digit numbers from 00 to 59.
+[+] → Matches the + character (since special characters lose their meaning inside []).
