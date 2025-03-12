@@ -1,0 +1,18 @@
+Fill in the Blanks:
+File is of _pointer_ data type.
+(In C, a file is represented using a FILE * pointer, which is used for file operations.)
+
+auto is the default storage class for a local variable in C.
+(By default, local variables in C have the auto storage class, meaning they are automatically allocated and deallocated.)
+
+fgets() is more appropriate for reading a multiword string.
+(Unlike scanf(), which stops at whitespace, fgets() reads a full line, making it better for multiword input.)
+
+Memory allocated by malloc() is initialized to _garbage values_.
+(The malloc() function allocates uninitialized memory, meaning it contains random (garbage) values from previous memory usage.)
+
+A wild pointer is a pointer which is not initialized to a valid memory address.
+(A wild pointer points to an undefined memory location, leading to unpredictable behavior or crashes.)
+
+The initgraph() function initializes the graphics system in a graphics program.
+(It sets up the graphics mode and loads the necessary drivers for graphical output.)
