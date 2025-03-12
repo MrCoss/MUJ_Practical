@@ -9,7 +9,7 @@
 import re
 
 def validate_pan(pan):
-  pattern = r'[A-Z]{5}[0-9]{4}[A-Z]$' # Pan format regex
+  pattern = r'^[A-Z]{5}[0-9]{4}[A-Z]$' # Pan format regex
   if re.fullmatch(pattern, pan):
     return "Valid PAN Number"
   else:
