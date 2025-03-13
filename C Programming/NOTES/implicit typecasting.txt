@@ -1,0 +1,20 @@
+Q.1: What is Implicit Type Casting in C?
+Implicit type casting, also known as type promotion, is a process where the compiler automatically converts one data type into another without explicit instruction from the programmer. This happens when an operation involves variables of different data types. The compiler ensures that the lower data type is promoted to a higher data type to prevent data loss.
+
+For example, in C, when an int is used in an expression with a float, the int is implicitly converted to a float.
+
+Example:
+#include <stdio.h>
+int main() {
+    int a = 10;
+    float b = 5.5;
+    float result = a + b; // 'a' is implicitly converted to float
+    printf("%f", result);
+    return 0;
+}
+Rules of Implicit Type Casting:
+
+char and short are converted to int.
+int is converted to float or double when used in floating-point operations.
+Lower data types (like int) are promoted to higher types (float, double, long).
+This automatic conversion prevents errors but may lead to precision loss if a higher type is converted back into a lower type.
