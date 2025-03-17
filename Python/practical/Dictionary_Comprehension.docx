@@ -1,0 +1,95 @@
+
+What is Dictionary Comprehension?
+Dictionary comprehension is a shortcut way to create dictionaries in Python. It helps us write less code while making the dictionary creation process faster and easier to read.
+
+1. The Traditional Way (Using a Loop)
+Normally, we create a dictionary like this:
+
+
+numbers = [1, 2, 3, 4]
+squares = {}
+
+for num in numbers:
+    squares[num] = num ** 2  # Store number as key and its square as value
+
+print(squares)
+Output:
+
+
+{1: 1, 2: 4, 3: 9, 4: 16}
+2. Dictionary Comprehension (The Shortcut!)
+We can do the same thing in one line using dictionary comprehension:
+
+
+numbers = [1, 2, 3, 4]
+squares = {num: num ** 2 for num in numbers}
+
+print(squares)
+Output:
+
+
+{1: 1, 2: 4, 3: 9, 4: 16}
+What Happened?
+
+{key: value for item in list}
+num is the key
+num ** 2 is the value
+3. Swapping Keys and Values
+Let’s say we have a dictionary:
+
+
+data = {1: "apple", 2: "banana", 3: "cherry"}
+We want to swap keys and values, so "apple" becomes the key and 1 becomes the value.
+
+With a loop:
+
+
+inverted = {}
+
+for key, value in data.items():
+    inverted[value] = key  # Swap key and value
+
+print(inverted)
+With dictionary comprehension:
+
+
+inverted = {value: key for key, value in data.items()}
+print(inverted)
+Output:
+
+
+{'apple': 1, 'banana': 2, 'cherry': 3}
+Why Use Dictionary Comprehension?
+✅ Less Code: Everything in one line!
+✅ Faster Execution: Python processes comprehensions more efficiently than loops.
+✅ Readable & Clear: Once you understand the format, it’s easier to read.
+
+4. Adding Conditions (Filtering)
+We can add an if condition inside dictionary comprehension:
+
+
+numbers = [1, 2, 3, 4, 5, 6]
+even_squares = {num: num ** 2 for num in numbers if num % 2 == 0}
+
+print(even_squares)
+Output:
+
+
+{2: 4, 4: 16, 6: 36}
+Here, we only include even numbers in the dictionary.
+
+Final Summary
+📌 Format of Dictionary Comprehension:
+
+
+
+{key: value for item in iterable}
+📌 With Condition:
+
+
+
+{key: value for item in iterable if condition}
+📌 Swapping Keys & Values:
+
+
+{value: key for key, value in dictionary.items()}
