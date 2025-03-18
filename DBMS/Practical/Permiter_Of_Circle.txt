@@ -1,0 +1,9 @@
+Write a program in PL/SQL to calculate perimeter of circle.(Take radius=3)? Can anyone send the code
+
+DECLARE
+    radius CONSTANT NUMBER := 3;
+    perimeter NUMBER;
+BEGIN
+    perimeter := 2 * ACOS(-1) * radius; -- Using ACOS(-1) to get accurate PI value
+    DBMS_OUTPUT.PUT_LINE('Perimeter of the Circle: ' || perimeter);
+END;
