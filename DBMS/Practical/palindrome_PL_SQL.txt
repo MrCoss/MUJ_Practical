@@ -1,0 +1,23 @@
+DECLARE
+    num NUMBER := 12321;  -- Number to check
+    rev_num NUMBER := 0;
+    temp NUMBER;
+    remainder NUMBER;
+BEGIN
+    temp := num;  -- Store the original number
+
+    -- Reverse the number
+    WHILE temp > 0 LOOP
+        remainder := MOD(temp, 10);  -- Get last digit
+        rev_num := rev_num * 10 + remainder;  -- Construct reverse number
+        temp := FLOOR(temp / 10);  -- Remove last digit (use FLOOR to avoid float issue)
+    END LOOP;
+
+    -- Check if original number and reversed number are the same
+    IF num = rev_num THEN
+        DBMS_OUTPUT.PUT_LINE(num || ' is a Palindrome');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE(num || ' is NOT a Palindrome');
+    END IF;
+END;
+/
