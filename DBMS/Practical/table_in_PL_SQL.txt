@@ -1,0 +1,14 @@
+DECLARE
+    num NUMBER := 3;  -- Number for which we need to print the table
+    i NUMBER := 1;    -- Loop counter
+    result NUMBER;    -- Stores multiplication result
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Multiplication Table of ' || num || ':');
+    
+    WHILE i <= 10 LOOP
+        result := num * i;
+        DBMS_OUTPUT.PUT_LINE(num || ' x ' || i || ' = ' || result);
+        i := i + 1;  -- Increment counter
+    END LOOP;
+END;
+/
