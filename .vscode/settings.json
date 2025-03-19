@@ -3,6 +3,7 @@
     "*.html": "html",
     "*.jinja": "html",
     "*.html.jinja": "html",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "LargestSmallestArray.C": "cpp"
   }
 }
