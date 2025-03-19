@@ -22,6 +22,14 @@ FROM EMPLOYEE
 ORDER BY salary DESC
 LIMIT 1 OFFSET 2;
 
+-- SELECt DISTINCT
+The SELECT DISTINCT statement is used to retrieve unique values from a column by removing duplicates.
+SELECT salary → Retrieves all salary values from the table.
+DISTINCT → Removes duplicate salary values and returns only unique ones.
+Ex-
+If the original salary column contains: 50000, 60000, 50000, 70000, 60000.
+DISTINCT removes duplicate values, keeping only one occurrence of each: 50000, 60000, 70000.
+The result set contains only unique salary values.
 
 -- Understanding LIMIT 1 OFFSET 1 in SQL
 In SQL, the LIMIT and OFFSET clauses are used for pagination or retrieving a specific subset of results from a query.
