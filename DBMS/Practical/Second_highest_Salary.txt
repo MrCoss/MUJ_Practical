@@ -1,0 +1,32 @@
+Q-Write an SQL query to fetch the second highest salary from the Employee table.
+
+
+-- Creating Table
+CREATE TABLE EMPLOYEE (
+  empId INT PRIMARY KEY,
+  name varchar(50) NOT NULL,
+  dept varchar(50) NOT NULL,
+  salary INT
+);
+
+-- inserting Data into Table 
+INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 'Sales', 50000);
+INSERT INTO EMPLOYEE VALUES (0002, 'Dave', 'Accounting',65000);
+INSERT INTO EMPLOYEE VALUES (0003, 'Ava', 'Sales', 48000);
+INSERT INTO EMPLOYEE VALUES (0004, 'Emma', 'IT', 70000);
+
+
+-- fetching
+SELECT DISTINCT salary 
+FROM EMPLOYEE
+ORDER BY salary DESC
+LIMIT 1 OFFSET 2;
+
+
+-- Understanding LIMIT 1 OFFSET 1 in SQL
+In SQL, the LIMIT and OFFSET clauses are used for pagination or retrieving a specific subset of results from a query.
+LIMIT 1 → This means fetch only 1 row.
+OFFSET 1 → This skips the first row and starts retrieving from the second row.
+Here
+OFFSET 1 → Skips the first row (empId = 0004, Emma). (order by salary)
+LIMIT 1 → Takes only 1 row (empId = 0002, Dave).
