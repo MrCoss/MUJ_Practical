@@ -1,0 +1,25 @@
+Find all employees whose name starts with 'A' in the Employee table.
+
+-- create
+CREATE TABLE EMPLOYEE (
+  empId INT PRIMARY KEY,
+  name varchar(50) NOT NULL,
+  dept varchar(50) NOT NULL,
+  salary INT
+);
+
+-- insert
+INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 'Sales', 50000);
+INSERT INTO EMPLOYEE VALUES (0002, 'Aman', 'Accounting',65000);
+INSERT INTO EMPLOYEE VALUES (0003, 'Ava', 'Sales', 48000);
+INSERT INTO EMPLOYEE VALUES (0004, 'Emma', 'IT', 70000);
+
+
+-- fetch 
+SELECT * FROM EMPLOYEE 
+WHERE name LIKE 'A%';
+
+
+Alternative Query: Case-Insensitive Search (MySQL)
+SELECT * FROM EMPLOYEE 
+WHERE LOWER(name) LIKE 'a%';
