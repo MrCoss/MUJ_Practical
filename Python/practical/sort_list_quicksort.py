@@ -39,3 +39,20 @@ print("Sorted List:", sorted_arr)
 
 # Commonly used in system libraries
 
+
+# Tree Representation of QuickSort
+
+# Original: [34, 7, 23, 32, 5, 62, 32]
+#                       (32)
+#            ┌───────────┴───────────┐
+#         [7, 23, 5]             [34, 62]
+#           (23)                    (62)
+#         ┌───┴───┐                ┌──┴──┐
+#       [7, 5]   []             [34]    []
+#         (5)
+#       ┌──┴──┐
+#      []    [7]
+
+# Final Merge: [5, 7, 23] + [32, 32] + [34, 62]
+# Sorted List: [5, 7, 23, 32, 32, 34, 62]
+
